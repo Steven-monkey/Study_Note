@@ -242,13 +242,11 @@ git switch <分支>	——>切换分支
 5. ### 解决冲突
 
 ```markdown
-人生不如意之事十之八九。
-----------
-在分支上提交
+----------在分支上提交
 git add 文件名
 git commit -m '提示信息'
 
-切换到主支上
+----------切换到主支上
 git switch main
 输出--
 	Switched to branch 'main'
@@ -256,6 +254,7 @@ git switch main
   	(use "git push" to publish your local commits)
 
 
+----------git log也可以看到分支的合并情况：
 git log --graph --pretty=oneline --abbrev-commit
 ```
 
