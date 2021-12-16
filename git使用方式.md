@@ -251,7 +251,9 @@ git commit -m '提示信息'
 切换到主支上
 git switch main
 输出--
-	
+	Switched to branch 'main'
+	Your branch is ahead of 'origin/main' by 1 commit.
+  	(use "git push" to publish your local commits)
 
 
 git log --graph --pretty=oneline --abbrev-commit
