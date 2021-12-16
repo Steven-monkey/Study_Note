@@ -261,6 +261,15 @@ git log --graph --pretty=oneline --abbrev-commit
 6. ### 分支管理
 
 ```markdown
+主分支上创建分支，在分支上再创建分支。
 git merge --no-ff -m "merge with no-ff" dev
+```
+
+7. ### BUG分支
+
+```markdown
+----------隐藏现有工作区
+git stash
+
 ```
 
