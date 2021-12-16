@@ -244,5 +244,7 @@ git switch <分支>	——>切换分支
 ```markdown
 人生不如意之事十之八九。
 ----------
+
+git log --graph --pretty=oneline --abbrev-commit
 ```
 
