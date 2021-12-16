@@ -268,8 +268,24 @@ git merge --no-ff -m "merge with no-ff" dev
 7. ### BUG分支
 
 ```markdown
-----------隐藏现有工作区
+----------保存现有工作区，让你可以去做另外一件事
 git stash
 
+----------查看之前保存的工作区
+git stash list
+输出--
+	stash@{0}: WIP on dev: f52c633 add merge
+	
+---------恢复之前的保存的工作区
+git stash apply
+	---恢复后，stash内容并不删除，你需要用git stash drop来删除
+git stash pop
+	---恢复的同时把stash内容也删了
+	---再用git stash list查看时，就看不到任何内容了stash内容了
+----------修复了主分支bug，分支上也有bug，也要先修复。
+git cherry-pick 4c805e2
+
+----------丢弃一个没有被合并过的分支  大写D
+git branch -D <name>
 ```
 
