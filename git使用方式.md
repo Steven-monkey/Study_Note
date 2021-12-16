@@ -260,7 +260,7 @@ git log --graph --pretty=oneline --abbrev-commit
 
 6. ### 分支管理
 
-```
-
+```markdown
+git merge --no-ff -m "merge with no-ff" dev
 ```
 
