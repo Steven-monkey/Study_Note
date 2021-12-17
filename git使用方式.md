@@ -385,5 +385,69 @@ git tag -d v0.1
 	Deleted tag 'v0.1' (was f15b0dd)
 ----------推送标签到远程
 git push origin v1.0
+---------推送全部标签到远程
+git push origin --tags
+
+如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：
+git tag -d v0.9
+git push origin :refs/tags/v0.9
+```
+
+11. ### Github使用
+
+```markdown
+----------克隆其他项目
+点“Fork”就在自己的账号下克隆了一个仓库
+然后再自己仓库下down下来
+```
+
+12. ### 自定义Git
+
+```markdown
+----------显示git的颜色
+git config --global color.ui true
+```
+
+- #### 忽略特殊文件
+
+```markdown
+----------忽略文件组合
+https://github.com/github/gitignore
+
+----------强制添加忽略文件
+git add -f App.class    ——>添加一个-f
+
+----------检测.gitignore文件
+git check-ignore -v <文件名>
+
+----------编写.gitignore文件规则
+.* ----->忽略以.开头的所有文件
+*.class ---->排除所以.class文件
+!.gitignore ---->不排除.gitignore文件
+!app.class ---->不排除app.class文件
+```
+
+13. ### 配置别名
+
+```markdown
+----------更改git命令
+git config --global alias.st status
+git config --global alias.ci commit
+git config --global alias.br branch
+
+----------查看和修改配置文件
+cat .git/config 
+
+当前用户的Git配置文件放在用户主目录下的一个隐藏文件.gitconfig中
+# This is Git's per-user configuration file.
+[user]
+	name = Monkey
+	email = 445928814@qq.com
+# Please adapt and uncomment the following lines:
+#	name = Monkey
+#	email = monkey@MonkeydeMacBook-Air.local
+[color]
+	ui = true
+
 ```
 
