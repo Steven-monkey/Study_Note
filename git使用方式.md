@@ -289,3 +289,101 @@ git cherry-pick 4c805e2
 git branch -D <name>
 ```
 
+8. ### 多人协作
+
+```markdown
+---------查看远程库信息
+git remote
+git remote -v
+----------推送远程库
+git push origin master
+git push origin dev
+		1.master分支上主分支，要时刻与远程同步
+		2.dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步
+		3.bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；
+		4.feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发
+
+---------解决远程推送冲突问题
+git pull ——>抓取提交信息，在本地合并，解决冲突，再推送
+
+----------本地分支和远程分支要建立连接，然后再pull
+git branch --set-upstream-to=origin/dev dev
+```
+
+- #### 多人协作整体流程
+
+```markdown
+1.首先，可以试图用git push origin <branch-name>推送自己的修改；
+
+2.如果推送失败，则因为远程分支比你的本地更新，需要先用git pull试图合并；
+
+3.如果合并有冲突，则解决冲突，并在本地提交；
+
+4.没有冲突或者解决掉冲突后，再用git push origin <branch-name>推送就能成功！
+
+5.如果git pull提示no tracking information，则说明本地分支和远程分支的链接关系没有创建，用命令git branch --set-upstream-to <branch-name> origin/<branch-name>。
+```
+
+- #### 小结
+
+```markdown
+1.查看远程库信息，使用git remote -v；
+
+2.本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
+3.从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+
+4.在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+
+5.建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+
+6.从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+```
+
+9. ### 创建标签
+
+```markdown
+----------创建标签
+git tag v1.0
+----------查看标签
+git tag
+---------补之前没有打的标签
+git log --pretty=oneline --abbrev-commit   ——>找到历史提交（最重要的是那个号码）
+--输出
+	12a631b (HEAD -> master, tag: v1.0, origin/master) merged bug 	fix 101
+	4c805e2 fix bug 101
+	e1e9c68 merge with no-ff
+	f52c633 add merge
+	cf810e4 conflict fixed
+	5dc6824 & simple
+	14096d0 AND simple
+	b17d20e branch test
+	d46f35e remove test.txt
+	b84166e add test.txt
+	519219b git tracks changes
+	e43a48b understand how stage works
+	1094adb append GPL
+	e475afc add distributed
+	eaadf4e wrote a readme file	
+----------补标签
+git tag v0.9 f52c633
+
+----------查看标签信息
+git show <标签名字>
+git show v1.0
+
+----------创建带有说明的标签
+git tag -a v0.1 -m "version 0.1 released" 1094adb
+```
+
+10. ### 操作标签
+
+```markdown
+---------删除标签
+git tag -d v0.1
+输出--
+	Deleted tag 'v0.1' (was f15b0dd)
+----------推送标签到远程
+git push origin v1.0
+```
+
